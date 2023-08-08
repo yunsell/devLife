@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* body에 Flexbox 스타일 적용하여 화면 중앙에 위치시킴 */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* 화면 높이를 100%로 설정하여 창이 작을 때에도 중앙에 위치하도록 함 */
+            margin: 0;
+        }
+
+        /* 입력창 스타일 */
+        .search-container {
+            position: relative;
+            width: 300px;
+        }
+
+        input[type="text"] {
+            width: 80%;
+            padding: 12px 20px;
+            border: 2px solid #ccc;
+            border-radius: 25px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+        }
+
+        /* 검색 아이콘 스타일 */
+        .search-icon {
+            position: absolute;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            color: #999;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <input type="text" id="inputValue"/>
+        <span class="search-icon" onclick="checkReg()">&#128269;</span>
+    </div>
+</body>
+</html>
+
+<script>
+function checkReg() {
+    const value = document.getElementById('inputValue').value; 
+    const regExp = /[^0-9a-zA-Z]/g; // 숫자와 영문자만 허용
+    // const regExp = /[^ㄱ-ㅎ|가-힣]/g; // 한글만 허용
+
+    if(regExp.test(value)) {
+        alert("영어와 숫자만 입력 가능합니다.");
+        return false;
+    } else {
+        alert("통과");
+        return true;
+    }
+};
+</script>
